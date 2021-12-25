@@ -1,1 +1,1 @@
-# Js-OOP- Capital-City 
+# Js-OOP- Quiz - Capital City 
