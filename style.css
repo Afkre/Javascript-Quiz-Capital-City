@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+
+}
+
+body{
+    background-image: url(/world.jpg);
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.row{
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.card{
+    background-size: cover;
+    background-color: transparent;
+    background-position: center center;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+

@@ -8,13 +8,17 @@ function Question(text, choices, answer) {
 
 
 //-------------------------3.Aşama -//Question prototype oluşturma aşaması
-
+//Soruların doğrı cevaplanıp cevaplanmadığını kontrol için prototype oluşturulur.
+//Doğru cevap ile verilen cevabın tip değeri true -false olarak karşılaştırılır.
 Question.prototype.checkAnswer=function (answer) {
     return this.answer === answer;
 }
 
+//console yardımı ile  bu arada cvep kontrolü yapılabilir.
+//console.log(q1.checkAnswer("New York"))
 
 //-------------------------5.Aşama -  Quiz Consructor 
+// Burada Quiz ouşturuldu. Burada soru dizini oluşturulur ve doğru cevap sayısına göre bir score ortaya çıkacak. 
 function Quiz(questions) {
     this.questions = questions;
     this.score = 0;
@@ -22,11 +26,14 @@ function Quiz(questions) {
 }
 
 //-------------------------6.Aşama -  Quiz Prototype
+//Quiz proto type ile index değeri baz alınarak soru baştan itibaren sorulmaya başlanır.
+//Sorularun sorulması sıra ile ya da random olarak sorulabilir.
 Quiz.prototype.getQuestion = function () {
     return this.questions[this.questionIndex];
 } 
 
 //-------------------------7.Aşama -  Quiz  isFinish Quizin bitişini kontrol eder. 
+//Quizin bitip bitmediği ile ilgili true ya da false değer karşımıza çıkar.
 Quiz.prototype.isFinish = function () {
     return this.questions.length=== this.questionIndex
 } 
@@ -34,7 +41,8 @@ Quiz.prototype.isFinish = function () {
 //-------------------------8.Aşama -  Quiz guess metodu - tahmin belirlenmesi
 Quiz.prototype.guess = function (answer) {
     var question = this.getQuestion();
-
+// Soruyu cevaplayanın o andaki soruya vereceği cevapla doğru cevap karşılaştırılır ve bu skora yansıtılr.
+// Bu yolla daha sonraki soruya getQuestion yöntemiile gidilmiş olur.
     if (question.checkAnswer(answer)) {
         this.score++;
     }
@@ -43,7 +51,7 @@ Quiz.prototype.guess = function (answer) {
 
 // console.log(quiz.isFinish()); //Quiz bitti mi diye soruyoruz...
 
-// console.log(quiz.getQuestion()); //Quiz kullanıcı karşısına çıkarılıyor. 3 soru olduğu için 3 kere yazıldı.
+// console.log(quiz.getQuestion()); //Quiz kullanıcı karşısına çıkarılıyor. 10 soru olduğu için 10 kere yazıldı.
 // quiz.guess('Javascript'); //Bir tahminde bulunup skor değerini değiştirmeye çalışacak.
 
 // console.log(quiz.getQuestion()); //Quiz kullanıcı karşısına çıkarılıyor.
@@ -59,6 +67,7 @@ Quiz.prototype.guess = function (answer) {
 
 
 //-------------------------2.Aşama
+//
 var q1 = new Question("What is the capital city of the USA?", ["New York","Chicago", "Dallas", "Washington D.C."], "Washington D.C.");
 var q2 = new Question("What is the capital city of the Kazakhstan?", ["Almatı", "Ulanbatur", "Nur-Sultan", "Cimkent"], "Nur-Sultan");
 var q3 = new Question("What is the capital city of the Spain?", ["Zaragoza", "Barcelona", "Madrid", "Sevilla"], "Madrid");
@@ -81,6 +90,9 @@ console.log(q2.checkAnswer('Nur-Sultan'));
 
 
 //-------------------------9.Aşama -  Start Quiz
+//Buradan quiz başlatılarak aşamalar. kontrol edilir.
+//isFinish bitmiş mi kontrol edilip ona göre true ve false değerleri aranarak quiz devam ettirilir.
+//
 
 var quiz = new Quiz(questions);
 loadQuestion();
